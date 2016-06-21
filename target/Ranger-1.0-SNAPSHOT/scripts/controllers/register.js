@@ -36,7 +36,7 @@ rangerApp.controller('UserinfoController', ['$scope', '$http','$window','$state'
     };
 
 }]);
-rangerApp.controller('GuideController', ['$scope', '$http', function ($scope, $http) {
+rangerApp.controller('GuideController', ['$scope', '$http','$state', function ($scope, $http,$state) {
     $scope.guideInfo = {
         name:'',
         gender:'',
@@ -51,6 +51,7 @@ rangerApp.controller('GuideController', ['$scope', '$http', function ($scope, $h
             .success(function (data) {
                 console.log(data);
                 alert("注册结果  " + data.res);
+                $state.go('home');
             }).error(function (err) {
             alert("注册失败  " + err);
         })
@@ -85,9 +86,10 @@ rangerApp.controller('loginCtrl', ['$scope', '$http', '$state', 'angency', 'Ange
                     // $state.go('home');
                 } else {
                     $scope.loginSuccess = false;
+                    alert("密码或用户名错误!");
                 }
             }, function (err) {
-                alert("登录失败  " + err);
+                alter("登录失败  " + err);
             });
         }
     }]);

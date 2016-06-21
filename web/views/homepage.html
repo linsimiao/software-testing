@@ -11,6 +11,7 @@
             </button>
         </div>
 
+
         <div class="col-xs-6 col-sm-6 col-md-6">
             <input class="form-control" type="text" name="name" placeholder="请输入" ng-model="search_bar_str">
 
@@ -22,15 +23,43 @@
 </div>
 <!--<div ui-view="searchBar"></div>-->
 
-
 <div class="container">
-    <img class="basicDiv" src="images/nav.jpg" height="200px" width="800px">
-    <form float="right">
+    <div class="row">
 
-    </form>
+        <div class=" col-md-9 col-md-offset-2 col-sm-9 col-sm-offset-2 col-xs-9 col-xs-offset-2 ">
+            <img id ="bigPic" class=" img-thumbnail" src ="images/11.jpg"  width="100%">
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-1 col-md-offset-2 col-sm-1 col-sm-offset-2 col-xs-1 col-xs-offset-2 ">
+            <button id = "leftButton" onclick="changeImgLeft()">
+                <
+            </button>
+        </div>
+        <div class=" col-md-2  col-sm-2 col-xs-2 ">
+            <img id = "leftPic" class=" img-thumbnail" style="vertical-align: center;" src ="images/15.jpg" width="100%" >
+        </div>
+        <div class=" col-md-3  col-sm-3  col-xs-3  ">
+            <img id ="middlePic" class=" img-thumbnail" src ="images/11.jpg"  width="100%">
+        </div>
+        <div class="col-md-2  col-sm-2 col-xs-2  ">
+            <img id = "rightPic" class=" img-thumbnail "  src ="images/12.jpg"   width="100%">
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1 ">
+            <button id = "rightButton" onclick="changeImgRight()">
+                >
+            </button>
+        </div>
+    </div>
+
+
 </div>
-<div class="basicDiv" style="min-width:1165px; margin:auto">
-    <ol class="breadcrumb">
+
+
+<div class="container" style="min-width:1165px; margin:auto">
+    <ol class="breadcrumb ">
         <li class="navLi"><a href="#">国内长线</a></li>
         <li class="navLi"><a href="#">周边短线</a></li>
         <li class="navLi"><a href="#">主题旅游</a></li>
@@ -179,5 +208,66 @@
     </div>
 </div>
 
+<script >
+    var trafficPicUrl=["images/11.jpg","images/12.jpg","images/13.jpg","images/14.jpg","images/15.jpg"];
+    //var smallerTrafficPicUrl = ["images/3.png","images/4.png","images/5.png","images/2.png"];
+    var timeInterval = 3000;
+    setInterval(changeImgRight,timeInterval);
+    var index = 0;
+    var indexLeft = trafficPicUrl.length-1;
+    var indexRight = 1;
+    function changeImgRight() {
+        if(index == trafficPicUrl.length-1){
+            index = 0;
+        }
+        else {
+            index += 1;
+        }
+        if(indexLeft == trafficPicUrl.length-1){
+            indexLeft = 0;
+        }
+        else {
+            indexLeft += 1;
+        }
+        if(indexRight == trafficPicUrl.length-1){
+            indexRight = 0;
+        }
+        else {
+            indexRight += 1;
+        }
+
+        document.getElementById("leftPic").src = trafficPicUrl[indexLeft];
+        document.getElementById("middlePic").src = trafficPicUrl[index];
+        document.getElementById("bigPic").src = trafficPicUrl[index];
+        document.getElementById("rightPic").src = trafficPicUrl[indexRight];
+
+    }
+    function changeImgLeft() {
+        if(index == 0){
+            index = trafficPicUrl.length-1;
+        }
+        else {
+            index -= 1;
+        }
+        if(indexLeft == 0){
+            indexLeft = trafficPicUrl.length-1;
+        }
+        else {
+            indexLeft -= 1;
+        }
+        if(indexRight == 0){
+            indexRight = trafficPicUrl.length-1;
+        }
+        else {
+            indexRight -= 1;
+        }
+        document.getElementById("leftPic").src = trafficPicUrl[indexLeft];
+        document.getElementById("middlePic").src = trafficPicUrl[index];
+        document.getElementById("bigPic").src = trafficPicUrl[index];
+        document.getElementById("rightPic").src = trafficPicUrl[indexRight];
+
+    }
+
+</script>
 
 

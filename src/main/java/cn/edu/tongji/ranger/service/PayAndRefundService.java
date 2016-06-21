@@ -8,6 +8,10 @@ import cn.edu.tongji.ranger.utils.ReturnWrapper;
  */
 public interface PayAndRefundService {
 
-    public ReturnWrapper<String> pay(PayDetails payDetails);
+    public ReturnWrapper<String> payToSystem(PayDetails payDetails);
+
+    public void payDelay(Long orderFormId);
+
+    public ReturnWrapper<String> payToSeller(Long orderFormId);
 
 }
