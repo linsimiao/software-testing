@@ -40,6 +40,7 @@ public class AccountController {
         return "home";
     }
 
+
     @RequestMapping("/register")
     public String testRegister(){
         return "angency_register";
