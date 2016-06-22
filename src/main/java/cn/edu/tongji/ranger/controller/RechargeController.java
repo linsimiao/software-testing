@@ -24,10 +24,12 @@ public class RechargeController {
 
     @RequestMapping(value = "/money",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,String> recharge(@RequestParam(value = "card_number")String card_number){
+    public Map<String,String> recharge(@RequestParam(value = "card_number")String card_number,
+                                       @RequestParam(value = "number")String number){
         Map<String,String> map = new HashMap<String, String>();
         boolean rechareRes = rechargeService.findByNumber(card_number);
         System.out.println(card_number+rechareRes);
+        boolean recharge = rechargeService.rechargeToSystem(card_number,number);
         if (rechareRes){
             map.put("res","success");
         }else{

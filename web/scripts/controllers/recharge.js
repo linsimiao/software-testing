@@ -12,7 +12,7 @@ rangerApp.controller('rechargeCtrl', ['$scope', '$http', '$state',function ($sco
         bank:''
     };
 
-    $scope.rechargeAnge = function (bankCard) {
+    $scope.rechargeAnge = function (bankCard,number) {
         console.log(bankCard);
         $http({
             url:'/Ranger/recharge/money',
@@ -23,7 +23,10 @@ rangerApp.controller('rechargeCtrl', ['$scope', '$http', '$state',function ($sco
             transformRequest : function(data) {
                 return $.param(data);
             },
-            data:bankCard
+            data:{
+                bankCard:bankCard,
+                number:number  
+                }
 
         }).then(function (response) {
             if(response.data.res=='success'){

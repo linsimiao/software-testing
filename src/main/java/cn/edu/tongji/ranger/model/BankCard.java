@@ -23,6 +23,8 @@ public class BankCard {
         this.id = id;
     }
 
+
+
     @Basic
     @Column(name = "owner")
     public String getOwner() {

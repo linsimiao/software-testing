@@ -19,6 +19,7 @@ import java.util.List;
 
 @Repository("AngencyDao")
 public class AngencyDaoImpl extends BaseDaoImpl<Angency> implements AngencyDao {
+
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -36,6 +37,7 @@ public class AngencyDaoImpl extends BaseDaoImpl<Angency> implements AngencyDao {
     public boolean updateAngency(Angency angency) {
         Session session = sessionFactory.getCurrentSession();
         session.update(angency);
+
         return true;
     }
 

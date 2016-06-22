@@ -5,4 +5,5 @@ package cn.edu.tongji.ranger.service;
  */
 public interface RechargeService {
     public boolean findByNumber(String cardNumber);
+    public boolean rechargeToSystem(String cardNumber,String number);
 }

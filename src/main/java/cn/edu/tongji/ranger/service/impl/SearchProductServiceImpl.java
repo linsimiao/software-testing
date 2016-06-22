@@ -33,7 +33,7 @@ public class SearchProductServiceImpl implements SearchProductService {
     @Autowired
     private GenericDao genericDao;
 
-    public List<SimpleProduct> listProducts(SearchCondition searchCondition) {
+        public List<SimpleProduct> listProducts(SearchCondition searchCondition) {
         StringBuilder searchStrSb = new StringBuilder(searchCondition.getSearchStr());
         if(searchCondition.getLimits() != null){
             for(String str : searchCondition.getLimits()){

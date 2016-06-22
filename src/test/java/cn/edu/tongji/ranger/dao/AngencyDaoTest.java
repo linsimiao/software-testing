@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  * Created by Sophie on 16/6/20.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"file:/Users/Sophie/Ranger/web/WEB-INF/applicationContext.xml"})
+@ContextConfiguration({"file:/Users/Sophie/Ranger/web/WEB-INF/app-contex.xml"})
 public class AngencyDaoTest {
     @Resource
 

@@ -1,7 +1,9 @@
 package cn.edu.tongji.ranger.dao.impl;
 
 import cn.edu.tongji.ranger.dao.RechargeDao;
+import cn.edu.tongji.ranger.model.Angency;
 import cn.edu.tongji.ranger.model.BankCard;
+import cn.edu.tongji.ranger.service.AngencyService;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -18,6 +20,9 @@ public class RechargeDaoImpl implements RechargeDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private AngencyService angencyService;
+
     public boolean findByNumber(String cardNumber) {
         Criteria criteria = sessionFactory.getCurrentSession()
                 .createCriteria(BankCard.class)
@@ -27,5 +32,13 @@ public class RechargeDaoImpl implements RechargeDao {
         if(list.size() > 0)
             return true;
         return false;
+    }
+
+    public boolean chargeToSystem(String card,String number){
+
+        Angency angency = angencyService.findById(card);
+        double balance = angency.getBalance();
+        angency.setBalance(balance - number);
+        angencyService.update(angency);
     }
 }
